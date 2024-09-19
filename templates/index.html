@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload and Matching</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Upload Images to Extract Dominant Colors</h1>
+    <p>Please upload multiple images to analyze their dominant colors.</p>
+
+    <!-- Form for uploading images to extract dominant colors -->
+    <form id="uploadForm">
+        <input type="file" id="fileInput" name="files[]" accept="image/*" multiple required>
+        <button type="submit">Upload and Extract Colors</button>
+    </form>
+
+    <!-- Preview uploaded images -->
+    <div id="preview">
+        <h3>Image Preview:</h3>
+    </div>
+
+    <!-- Display the dominant colors extracted from the images -->
+    <div id="colorBlocks">
+        <h3>Dominant Colors:</h3>
+    </div>
+
+    <h1>Find Closest Matching Image</h1>
+    <p>Upload a different set of images to find the one closest to the extracted dominant colors.</p>
+
+    <!-- Form for uploading images to find the closest match -->
+    <form id="matchForm">
+        <input type="file" id="matchFileInput" name="files[]" accept="image/*" multiple required>
+        <button type="submit">Find Closest Match</button>
+    </form>
+
+    <!-- Display the result (the closest matching image) -->
+    <div id="result">
+        <h3>Closest Matching Image:</h3>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
