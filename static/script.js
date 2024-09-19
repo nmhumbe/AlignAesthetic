@@ -1,4 +1,4 @@
-// Handle image preview for multiple files
+// Handle image preview for multiple files (for extracting dominant colors)
 document.getElementById('fileInput').addEventListener('change', function (event) {
     let files = event.target.files;
     let previewContainer = document.getElementById('preview');
@@ -17,6 +17,26 @@ document.getElementById('fileInput').addEventListener('change', function (event)
     });
 });
 
+// Handle image preview for the second file input (for matching closest image)
+document.getElementById('matchFileInput').addEventListener('change', function (event) {
+    let files = event.target.files;
+    let matchPreviewContainer = document.getElementById('matchPreview');
+    matchPreviewContainer.innerHTML = ''; // Clear previous preview
+
+    // Loop through all selected files and create preview
+    Array.from(files).forEach(file => {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            let previewImage = new Image();
+            previewImage.src = e.target.result;
+            previewImage.style.maxWidth = '100%'; // Optional styling
+            matchPreviewContainer.appendChild(previewImage);
+        };
+        reader.readAsDataURL(file);
+    });
+});
+
+
 // Handle form submission for extracting dominant colors
 document.getElementById('uploadForm').addEventListener('submit', async function (event) {
     event.preventDefault();
@@ -26,7 +46,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
 
     // Append all selected files to the form data
     Array.from(fileInput).forEach(file => {
-        formData.append('files[]', file);
+        formData.append('filesArray', file);
     });
 
     // Fetch the dominant colors from the server
@@ -37,7 +57,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
 
     let result = await response.json();
 
-    // Display the dominant colors as colored blocks
+    // Display dominant colors as colored blocks
     let colorBlocks = document.getElementById('colorBlocks');
     colorBlocks.innerHTML = ''; // Clear previous colors
 
@@ -60,19 +80,27 @@ document.getElementById('matchForm').addEventListener('submit', async function (
 
     // Append all selected images for matching
     Array.from(fileInput).forEach(file => {
-        formData.append('files[]', file);
+        formData.append('filesArray', file);
     });
 
-    // Fetch the dominant colors from the previous step
+    // Fetch dominant colors from the previous step
     let dominantColors = [...document.getElementById('colorBlocks').children].map(block => {
         let rgb = window.getComputedStyle(block).backgroundColor;
         return rgb.match(/\d+/g).map(Number);  // Extract the RGB values as numbers
     });
 
+    // Log dominant colors
+    console.log("Dominant colors extracted:", dominantColors);
+
     // Append dominant colors as JSON in the FormData
     formData.append('target_colors', JSON.stringify(dominantColors));
 
     try {
+        // Log the FormData before sending
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ':', pair[1]);
+        }
+
         let matchResponse = await fetch('/match', {
             method: 'POST',
             body: formData
@@ -99,3 +127,4 @@ document.getElementById('matchForm').addEventListener('submit', async function (
         console.error('Error fetching match result:', error);
     }
 });
+

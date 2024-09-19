@@ -12,7 +12,7 @@
 
     <!-- Form for uploading images to extract dominant colors -->
     <form id="uploadForm">
-        <input type="file" id="fileInput" name="files[]" accept="image/*" multiple required>
+        <input type="file" id="fileInput" name="filesArray" accept="image/*" multiple required>
         <button type="submit">Upload and Extract Colors</button>
     </form>
 
@@ -31,9 +31,16 @@
 
     <!-- Form for uploading images to find the closest match -->
     <form id="matchForm">
-        <input type="file" id="matchFileInput" name="files[]" accept="image/*" multiple required>
+        <input type="file" id="matchFileInput" name="filesArray" accept="image/*" multiple required>
         <button type="submit">Find Closest Match</button>
     </form>
+    
+    
+    <!-- Preview uploaded images -->
+    <div id="matchPreview">
+        <h3>Image Preview (for matching):</h3>
+        <!-- Previews of uploaded images for matching will appear here -->
+    </div>
 
     <!-- Display the result (the closest matching image) -->
     <div id="result">

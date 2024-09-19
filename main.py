@@ -9,7 +9,7 @@ import json
 
 app = Flask(__name__)
 
-# Function to get the dominant colors of an image
+# Get the dominant colors of an image
 def get_dominant_colors(img, clusters=4):
     img = imutils.resize(img, height=200)
     flat_img = np.reshape(img, (-1, 3))  # Flatten the image
@@ -22,11 +22,11 @@ def get_dominant_colors(img, clusters=4):
     dominant_colors = np.array(kmeans.cluster_centers_, dtype='uint')
     return dominant_colors
 
-# Function to calculate the color difference between two colors
+# Calculate the color difference between two colors
 def color_difference(color1, color2):
     return np.linalg.norm(np.array(color1) - np.array(color2))
 
-# Function to find the image closest to the given colors
+# Find the image closest to the given colors
 def find_closest_image(images, target_colors, clusters=4):
     closest_img = None
     min_diff = float('inf')
@@ -50,7 +50,7 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload_images():
     # Get all uploaded files
-    files = request.files.getlist('files[]')
+    files = request.files.getlist('filesArray')
 
     # Store images for color extraction
     images = []
@@ -94,7 +94,7 @@ def match_image():
         print("Target colors:", target_colors)
 
         # Extract the uploaded files (images)
-        files = request.files.getlist('files[]')
+        files = request.files.getlist('filesArray')
         print("Number of files received:", len(files))
 
         if not files:
@@ -131,50 +131,6 @@ def match_image():
     except Exception as e:
         print("Error:", e)
         return jsonify({'error': 'An error occurred', 'message': str(e)}), 500
-
-
-@app.route('/match/colors', methods=['POST'])
-def match_colors():
-    try:
-        global uploaded_images
-        if not uploaded_images:
-            return jsonify({'error': 'No uploaded images available for matching'}), 400
-
-        target_colors = request.json['target_colors']
-        if not target_colors:
-            return jsonify({'error': 'No target colors found'}), 400
-
-        target_colors = np.array(target_colors, dtype='uint')
-        print("Target colors received:", target_colors)
-
-        # Find the image that matches the target colors the closest
-        closest_img = find_closest_image(uploaded_images, target_colors)
-
-        if closest_img is None:
-            print("No matching image found")
-            return jsonify({'error': 'No matching image found'}), 400
-
-        # Print shape and type of image selected
-        print("Closest image found:", type(closest_img), closest_img.shape)
-
-        # Convert the closest image to base64 to return
-        success, image_encoded = cv2.imencode('.png', closest_img)
-
-        if not success:
-            print("Failed to encode image")
-            return jsonify({'error': 'Image encoding failed'}), 500
-
-        img_bytes = base64.b64encode(image_encoded).decode('utf-8')
-
-        # Debug: Print the first few characters of the base64 encoded image
-        print("Encoded image (base64, first 100 chars):", img_bytes[:100])
-
-        return jsonify({'closest_image': img_bytes})
-
-    except Exception as e:
-        print("Error:", e)
-        return jsonify({'error': 'An error occurred', 'message': str(e)}), 500
-
 
 if __name__ == '__main__':
     app.run(debug=True)
