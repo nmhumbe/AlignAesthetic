@@ -1,7 +1,7 @@
 # Align Aesthetic
 
 #### A Social Media Color Palette Curation Tool
-<img src="demo.png" alt="Demo" height="600">
+<img src="demo_image.png" alt="Demo" height="600">
 
 
 ## About this Project
