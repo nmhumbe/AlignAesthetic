@@ -18,7 +18,7 @@ To run the application, follow these steps:
    ```
 2. Install the required Python dependencies:
    ```sh
-   pip install Flask opencv-python scikit-learn numpy
+   pip install Flask opencv-python scikit-learn numpy imutils
    ```
 3. Start the Flask application
    ```sh
@@ -51,7 +51,7 @@ To run the application, follow these steps:
    ```
 3. Install the dependencies:
    ```sh
-   pip install Flask opencv-python scikit-learn numpy
+   pip install Flask opencv-python scikit-learn numpy imutils
    ```
 
 ### Guidelines
