@@ -18,7 +18,6 @@ document.getElementById('fileInput').addEventListener('change', function (event)
         reader.onload = function (e) {
             let previewImage = new Image();
             previewImage.src = e.target.result;
-            previewImage.style.maxWidth = '100%'; // Optional styling
             previewContainer.appendChild(previewImage);
         };
         reader.readAsDataURL(file);
@@ -44,7 +43,6 @@ document.getElementById('matchFileInput').addEventListener('change', function (e
         reader.onload = function (e) {
             let previewImage = new Image();
             previewImage.src = e.target.result;
-            previewImage.style.maxWidth = '100%'; // Optional styling
             matchPreviewContainer.appendChild(previewImage);
         };
         reader.readAsDataURL(file);

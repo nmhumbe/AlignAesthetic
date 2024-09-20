@@ -29,6 +29,7 @@ p {
     margin-top: 8px;
     margin-left: 2px;
     font-family: 'Roboto', sans-serif;
+    font-size: 17px;
 }
 
 
@@ -65,7 +66,7 @@ h1 {
 h2 {
     color: #f0f0f0;
     font-family: 'Roboto', sans-serif;
-    font-size: 25px;
+    font-size: 27px;
     margin-top: 2px;
     margin-bottom: 14px;
     margin-left: 2px;
@@ -75,7 +76,7 @@ h2 {
 h3 {
     color: #f0f0f0;
     font-family: 'Roboto', sans-serif;
-    font-size: 19px;
+    font-size: 20px;
     margin-left: 2px;
 }
 
@@ -99,4 +100,14 @@ button:hover {
     background-color: #003386;
 }
 
+
+/* Image preview styling for smaller display */
+#preview img, #matchPreview img {
+    max-width: 300px; 
+    max-height: 300px; 
+    margin: 5px; 
+    border-radius: 5px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    object-fit: cover; 
+}
 
