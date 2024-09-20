@@ -1,11 +1,15 @@
 # Align Aesthetic
 
 #### A Social Media Color Palette Curation Tool
+<img src="assets/chatclone-demo.png" alt="Image" height="600">
+
 
 ## About this Project
 
 ### Description/Motivation
 **Align Aesthetic** is a full-stack web application that helps users curate a cohesive social media aesthetic by extracting and visualizing dominant color palettes from user-uploaded images. The application leverages OpenCV and KMeans clustering to analyze the colors from the images, enabling users to match new images with the dominant colors of their existing content.
+
+**Video Demo:** ![video]
 
 ### How to Use
 To run the application, follow these steps:
