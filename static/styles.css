@@ -1,39 +1,94 @@
+/* Main container for the two-column layout */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Space between the two columns */
+    margin-top: 10px;
+    padding: 20px;
+}
+
+/* Each column will take up equal space */
+.column {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #2a2a2b; 
+}
+
+/* Body styling */
 body {
-    background-color: #333 ;
-    font-family: 'Roboto';
-    margin-left: 10 px;
+    background-color: #1b1b1c;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 10px;
     color: #ffffff;
 }
 
+
+/* General text styling */
 p {
-    margin-left: 10px;
-    font-family: 'Roboto';
+    margin-top: 8px;
+    margin-left: 2px;
+    font-family: 'Roboto', sans-serif;
 }
 
+
+/* Styling for the row of color blocks */
+.color-row {
+    display: flex;
+    gap: 6px; /* Space between color blocks */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 6px;
+}
+
+/* Each color block */
+.color-block {
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    border: 2px solid #ddd;
+}
+
+/* Heading styles */
 h1 {
     margin-top: 0px;
     margin-bottom: 10px;
-    margin-left: 5px;
+    margin-left: 4px;
     font-family: georgia, serif;
     font-size: 4rem;
     color: whitesmoke;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+                 0 0 20px rgba(99, 99, 99, 0.522),
+                 0 0 30px rgba(14, 14, 14, 0.3);
 }
 
+h2 {
+    color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    margin-top: 2px;
+    margin-bottom: 14px;
+    margin-left: 2px;
+
+}
 
 h3 {
-    font-size: 24px;
-    font-family: georgia, serif;
-    color: #333;
+    color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 19px;
+    margin-left: 2px;
+
 }
 
+/* Form and button styles */
 form {
     margin-top: 20px;
 }
 
 button {
-    font-size: 18px;
-    padding: 10px 20px;
+    font-size: 16px;
+    padding: 10px 16px;
+    margin-top: 10px;
     background-color: #2269c6;
     color: white;
     border: none;
@@ -45,31 +100,4 @@ button:hover {
     background-color: #003386;
 }
 
-/*
-#preview img, #result img {
-    margin-top: 15px;
-    max-width: 400px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-}
 
-/* Styling preview and result sections 
-#preview, #result {
-    margin-top: 20px;
-
-}
-
-/*
-#preview {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 10px;
-    display: inline-block;
-}
-
-#result {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 10px;
-    display: inline-block;
-}

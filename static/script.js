@@ -2,7 +2,9 @@
 document.getElementById('fileInput').addEventListener('change', function (event) {
     let files = event.target.files;
     let previewContainer = document.getElementById('preview');
-    previewContainer.innerHTML = ''; // Clear previous preview
+    
+    // Clear previous images
+    previewContainer.querySelectorAll('img').forEach(img => img.remove());
 
     // Loop through all selected files and create preview
     Array.from(files).forEach(file => {
@@ -21,8 +23,10 @@ document.getElementById('fileInput').addEventListener('change', function (event)
 document.getElementById('matchFileInput').addEventListener('change', function (event) {
     let files = event.target.files;
     let matchPreviewContainer = document.getElementById('matchPreview');
-    matchPreviewContainer.innerHTML = ''; // Clear previous preview
 
+    // Clear previous images
+    matchPreviewContainer.querySelectorAll('img').forEach(img => img.remove());
+    
     // Loop through all selected files and create preview
     Array.from(files).forEach(file => {
         let reader = new FileReader();
@@ -69,6 +73,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
         colorBlock.style.display = 'inline-block';
         colorBlocks.appendChild(colorBlock);
     });
+
 });
 
 // Match and find the closest image to the extracted dominant colors

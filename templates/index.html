@@ -7,45 +7,81 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Upload Images to Extract Dominant Colors</h1>
-    <p>Please upload multiple images to analyze their dominant colors.</p>
-
-    <!-- Form for uploading images to extract dominant colors -->
-    <form id="uploadForm">
-        <input type="file" id="fileInput" name="filesArray" accept="image/*" multiple required>
-        <button type="submit">Upload and Extract Colors</button>
-    </form>
-
-    <!-- Preview uploaded images -->
-    <div id="preview">
-        <h3>Image Preview:</h3>
-    </div>
-
-    <!-- Display the dominant colors extracted from the images -->
-    <div id="colorBlocks">
-        <h3>Dominant Colors:</h3>
-    </div>
-
-    <h1>Find Closest Matching Image</h1>
-    <p>Upload a different set of images to find the one closest to the extracted dominant colors.</p>
-
-    <!-- Form for uploading images to find the closest match -->
-    <form id="matchForm">
-        <input type="file" id="matchFileInput" name="filesArray" accept="image/*" multiple required>
-        <button type="submit">Find Closest Match</button>
-    </form>
+    <h1>Align Aesthetic</h1>
+    <p>Need to curate the perfect feed? Your're in the right place! Upload the cover pics on your feed to find your color aesthetic. Then upload images for your new post to find the perfect cover image for your next post!</p>
     
-    
-    <!-- Preview uploaded images -->
-    <div id="matchPreview">
-        <h3>Image Preview (for matching):</h3>
-        <!-- Previews of uploaded images for matching will appear here -->
+    <!-- New row of color blocks -->
+    <div class="color-row">
+        <div class="color-block" style="background-color: #81c1e2;"></div>
+        <div class="color-block" style="background-color: #558eaa;"></div>
+        <div class="color-block" style="background-color: #88b04b;"></div>
+        <div class="color-block" style="background-color: #d65076;"></div>
+        <div class="color-block" style="background-color: #45b8ac;"></div>
+        <div class="color-block" style="background-color: #81c1e2;"></div>
+        <div class="color-block" style="background-color: #558eaa;"></div>
+        <div class="color-block" style="background-color: #88b04b;"></div>
+        <div class="color-block" style="background-color: #d65076;"></div>
+        <div class="color-block" style="background-color: #45b8ac;"></div>
+        <div class="color-block" style="background-color: #81c1e2;"></div>
+        <div class="color-block" style="background-color: #558eaa;"></div>
+        <div class="color-block" style="background-color: #88b04b;"></div>
+        <div class="color-block" style="background-color: #d65076;"></div>
+        <div class="color-block" style="background-color: #45b8ac;"></div>
+        <div class="color-block" style="background-color: #81c1e2;"></div>
+        <div class="color-block" style="background-color: #558eaa;"></div>
+        <div class="color-block" style="background-color: #88b04b;"></div>
+        <div class="color-block" style="background-color: #d65076;"></div>
+        <div class="color-block" style="background-color: #45b8ac;"></div>
     </div>
 
-    <!-- Display the result (the closest matching image) -->
-    <div id="result">
-        <h3>Closest Matching Image:</h3>
+    <!-- Container for two columns -->
+    <div class = "container">
+        <!-- Left Column: Dominant Colors-->
+        <div class="column">
+            <h2>Find Color Aesthetic</h2>
+            <p>Upload multiple images to see the dominant colors and find your color aesthetic.</p>
+        
+            <!-- Form for uploading images to extract dominant colors -->
+            <form id="uploadForm">
+                <input type="file" id="fileInput" name="filesArray" accept="image/*" multiple required>
+                <button type="submit">Upload and Extract Colors</button>
+            </form>
+        
+            <!-- Preview uploaded images -->
+            <div id="preview">
+                <h3>Image Preview:</h3>
+            </div>
+        
+            <!-- Display the dominant colors extracted from the images -->
+            <div id="colorBlocks">
+                <h3 style="display: none;">Dominant Colors:</h3>
+            </div>
+        </div>
+
+        <!-- Right Column: Find Closest Matching Image-->
+        <div class="column">
+            <h2>Find Closest Matching Image</h2>
+            <p>Upload a different set of images to find the image that most closesly matches your color aesthetic.</p>
+        
+            <!-- Form for uploading images to find the closest match -->
+            <form id="matchForm">
+                <input type="file" id="matchFileInput" name="filesArray" accept="image/*" multiple required>
+                <button type="submit">Find Closest Match</button>
+            </form>
+            
+            <!-- Preview uploaded images -->
+            <div id="matchPreview">
+                <h3>Image Preview:</h3>
+                <!-- Previews of uploaded images for matching will appear here -->
+            </div>
+        
+            <!-- Display the result (the closest matching image) -->
+            <div id="result">
+                <h3 style="display: none;">Closest Matching Image:</h3>
+            </div>
+        </div>
     </div>
+
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
