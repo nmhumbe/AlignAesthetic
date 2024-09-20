@@ -49,12 +49,12 @@
         
             <!-- Preview uploaded images -->
             <div id="preview">
-                <h3>Image Preview:</h3>
+                <h3 style="display: none;">Image Preview:</h3>
             </div>
         
             <!-- Display the dominant colors extracted from the images -->
             <div id="colorBlocks">
-                <h3 style="display: none;">Dominant Colors:</h3>
+                <h3>Dominant Colors:</h3>
             </div>
         </div>
 
@@ -71,17 +71,16 @@
             
             <!-- Preview uploaded images -->
             <div id="matchPreview">
-                <h3>Image Preview:</h3>
+                <h3 style="display: none;">Image Preview:</h3>
                 <!-- Previews of uploaded images for matching will appear here -->
             </div>
         
             <!-- Display the result (the closest matching image) -->
             <div id="result">
-                <h3 style="display: none;">Closest Matching Image:</h3>
+                <h3>Closest Matching Image:</h3>
             </div>
         </div>
     </div>
-
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

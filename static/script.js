@@ -6,6 +6,12 @@ document.getElementById('fileInput').addEventListener('change', function (event)
     // Clear previous images
     previewContainer.querySelectorAll('img').forEach(img => img.remove());
 
+    // Check if files are uploaded
+    if (files.length > 0) {
+        // Show the image preview title
+        document.querySelector('#preview h3').style.display = 'block';
+    }
+
     // Loop through all selected files and create preview
     Array.from(files).forEach(file => {
         let reader = new FileReader();
@@ -27,6 +33,11 @@ document.getElementById('matchFileInput').addEventListener('change', function (e
     // Clear previous images
     matchPreviewContainer.querySelectorAll('img').forEach(img => img.remove());
     
+    if (files.length > 0) {
+        // Show the image preview title
+        document.querySelector('#matchPreview h3').style.display = 'block';
+    }
+
     // Loop through all selected files and create preview
     Array.from(files).forEach(file => {
         let reader = new FileReader();
@@ -65,6 +76,11 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
     let colorBlocks = document.getElementById('colorBlocks');
     colorBlocks.innerHTML = ''; // Clear previous colors
 
+    // Clear previous colors and display title
+    let colorBlocksContainer = document.getElementById('colorBlocks');
+    colorBlocksContainer.innerHTML = '<h3>Dominant Colors:</h3>'; // Set title
+
+
     result.dominant_colors.forEach(color => {
         let colorBlock = document.createElement('div');
         colorBlock.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
@@ -89,7 +105,7 @@ document.getElementById('matchForm').addEventListener('submit', async function (
     });
 
     // Fetch dominant colors from the previous step
-    let dominantColors = [...document.getElementById('colorBlocks').children].map(block => {
+    let dominantColors = [...document.getElementById('colorBlocks').querySelectorAll('div')].map(block => {
         let rgb = window.getComputedStyle(block).backgroundColor;
         return rgb.match(/\d+/g).map(Number);  // Extract the RGB values as numbers
     });
@@ -123,8 +139,11 @@ document.getElementById('matchForm').addEventListener('submit', async function (
             matchedImage.src = 'data:image/png;base64,' + result.closest_image;
             matchedImage.style.maxWidth = '100%';
 
-            document.getElementById('result').innerHTML = ''; // Clear previous result
-            document.getElementById('result').appendChild(matchedImage);
+        // Keep the title and just add the matched image below it
+        document.getElementById('result').innerHTML = '<h3>Closest Matching Image:</h3>'; // Keep the title
+        document.getElementById('result').appendChild(matchedImage);
+
+        
         } else {
             console.log('No image returned:', result);
         }
